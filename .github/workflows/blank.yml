@@ -1,81 +1,180 @@
-    header {
-        background-color: #333;
-        color: white;
-        padding: 10px;
-        text-align: center;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldeyx - Minecraft Server</title>
+    <meta name="description" content="Página oficial de Eldeyx, servidor de Minecraft. Explora próximos lanzamientos y proyectos nuevos.">
+    <meta name="keywords" content="Minecraft, servidor, Eldeyx, lanzamientos, proyectos, juegos">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/minecraft-4');
+        body {
+            font-family: 'Minecraft', sans-serif;
+            background-image: url('https://i.imgur.com/NEix2y1.png');
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid #4CAF50;
+        }
+        .server-name {
+            font-size: 2.5em;
+            animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        section {
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border: 5px solid #4CAF50;
+            border-radius: 10px;
+        }
+        .info-button {
+            background-color: #2E8B57;
+            color: white;
+            border: 2px solid #4CAF50;
+            padding: 15px 30px;
+            margin: 10px 0;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            font-size: 1.2em;
+            font-family: 'Minecraft', sans-serif;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+        .info-button:hover, .info-button:focus {
+            background-color: #45a049;
+            opacity: 0.9;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 5px solid #4CAF50;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            color: #000;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="server-name">Bienvenido a Eldeyx</div>
+    <p>Explora los próximos lanzamientos y proyectos de mi servidor de Minecraft</p>
+</header>
+
+<section>
+    <div class="section-title">Próximos Lanzamientos</div>
+    <button class="info-button" onclick="showModal('lanzamiento1')">Lanzamiento 1</button>
+    <button class="info-button" onclick="showModal('lanzamiento2')">Lanzamiento 2</button>
+    <button class="info-button" onclick="showModal('lanzamiento3')">Lanzamiento 3</button>
+</section>
+
+<section>
+    <div class="section-title">Proyectos Nuevos</div>
+    <button class="info-button" onclick="showModal('proyecto1')">Proyecto 1</button>
+    <button class="info-button" onclick="showModal('proyecto2')">Proyecto 2</button>
+    <button class="info-button" onclick="showModal('proyecto3')">Proyecto 3</button>
+</section>
+
+<section>
+    <div class="section-title">Contacto</div>
+    <p>Para más información, puedes contactarme en: <a href="mailto:Eliudaserrano2011@gmail.com">Eliudaserrano2011@gmail.com</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Eldeyx - Todos los derechos reservados</p>
+</footer>
+
+<!-- Modal Structure -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    function showModal(infoId) {
+        const modal = document.getElementById('infoModal');
+        const modalText = document.getElementById('modalText');
+        const infoText = prompt('Escribe la información para ' + infoId + ':');
+        if (infoText) {
+            modalText.textContent = infoText;
+            modal.style.display = "block";
+        }
     }
 
-    main {
-        padding: 20px;
+    function closeModal() {
+        document.getElementById('infoModal').style.display = "none";
     }
 
-    #mediaContainer {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 20px;
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('infoModal')) {
+            closeModal();
+        }
     }
+</script>
 
-    .media {
-        position: relative;
-        border-radius: 5px;
-        overflow: hidden;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 100%;
-    }
-
-    .media video,
-    .media img {
-        width: 100%;
-        height: auto;
-        max-height: 300px;
-    }
-
-    .commentsSection {
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 10px;
-        box-sizing: border-box;
-        display: none;
-    }
-
-    .commentsList {
-        margin-top: 10px;
-        max-height: 100px;
-        overflow-y: auto;
-    }
-
-    .commentInput {
-        width: calc(100% - 20px);
-        margin-top: 5px;
-    }
-
-    .commentButton,
-    .sendButton {
-        width: calc(50% - 20px);
-        margin-top: 5px;
-        padding: 10px;
-        background-color: #333;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    .commentForm {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .commentForm textarea {
-        flex: 1;
-        margin-right: 10px;
-    }
-
-    .commentButton {
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #333;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-</style>
+</body>
+</html>
